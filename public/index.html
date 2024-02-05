@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>Obter informações analíticas de websites</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <h1 class="text-center mt-5">Formulário de URL</h1>
+                    <form id="urlForm" class="mt-4">
+                        <div class="form-group">
+                            <label for="url">URL:</label>
+                            <input type="text" id="url" name="url" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-5">
+                <div class="col-6">
+                    <h1 class="text-center">Obter informações por ID</h1>
+                    <form id="idForm" class="mt-4">
+                        <div class="form-group">
+                            <label for="searchId">ID:</label>
+                            <input type="text" id="searchId" name="searchId" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Obter Informações</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="main.js"></script>
+    </body>
+</html>
