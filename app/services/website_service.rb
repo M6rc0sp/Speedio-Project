@@ -6,7 +6,7 @@ class WebsiteService
     spider = WebsiteSpider.new
 
     begin
-      informations = spider.scrape_website(url)
+      informations = spider.scrape_website(search_id, url)
       $colecao.update_one({ 'search_id' => search_id }, { '$set' => informations }, :upsert => true)
     rescue StandardError => e
       puts "Erro ao salvar informações: #{e.message}"

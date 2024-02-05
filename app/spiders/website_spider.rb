@@ -9,21 +9,26 @@ class WebsiteSpider
     @wait = Selenium::WebDriver::Wait.new(timeout: 10)
   end
 
-  def scrape_website(url)
+  def scrape_website(search_id, url)
     informations = {}
 
     begin
       @driver.navigate.to 'https://www.similarweb.com/website/' + url
 
-      # Verificar o nome do site
-      site = @wait.until{ @driver.find_element(:class, 'wa-overview__title') }
+      begin
+        # Verificar o nome do site
+        site = @wait.until{ @driver.find_element(:class, 'wa-overview__title') }
 
-      # Verificar a categoria do site
-      category = @wait.until{ @driver.find_element(:class, 'app-company-info__link') }
+        # Verificar a categoria do site
+        category = @wait.until{ @driver.find_element(:class, 'app-company-info__link') }
 
-      # Verificar se o ranking subiu ou desceu
-      ranking_change_container = @wait.until{ @driver.find_element(:css, '.wa-rank-list__value-container') }
-      classification = ranking_change_container.find_element(:class, 'wa-rank-list__value')
+        # Verificar se o ranking subiu ou desceu
+        ranking_change_container = @wait.until{ @driver.find_element(:css, '.wa-rank-list__value-container') }
+        classification = ranking_change_container.find_element(:class, 'wa-rank-list__value')
+      rescue Selenium::WebDriver::Error::NoSuchElementError
+        puts "Site não encontrado"
+        raise "Site não encontrado"
+      end
 
       begin
         ranking_change_element = ranking_change_container.find_element(:class, 'app-parameter-change')
